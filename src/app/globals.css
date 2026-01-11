@@ -6,3 +6,29 @@
     @apply bg-base-100 text-base-content min-h-screen transition-colors duration-300;
   }
 }
+
+
+
+
+
+
+
+/* Swiper Custom Colors */
+:root {
+  --swiper-theme-color: #1ECAD3; /* আপনার Teal কালার */
+  --swiper-navigation-size: 24px;
+}
+
+.swiper-button-next, .swiper-button-prev {
+  background: rgba(255, 255, 255, 0.1);
+  width: 50px !important;
+  height: 50px !important;
+  border-radius: 50%;
+  backdrop-filter: blur(5px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.swiper-pagination-bullet-active {
+  width: 30px !important;
+  border-radius: 10px !important;
+}

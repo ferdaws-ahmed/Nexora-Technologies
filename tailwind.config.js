@@ -5,7 +5,6 @@ module.exports = {
   ],
   theme: {
     extend: {
-      
       colors: {
         'nexora-blue': '#0A2540',
         'nexora-teal': '#1ECAD3',
@@ -14,23 +13,23 @@ module.exports = {
   },
   plugins: [require("daisyui")],
 
-  
   daisyui: {
     themes: [
       {
         light: {
-          ...require("daisyui/src/theming/themes")["light"],
-          "primary": "#1ECAD3",      
-          "secondary": "#0A2540",    
-          "accent": "#1ECAD3",
-          "base-100": "#ffffff",     
-        },
-        dark: {
-          ...require("daisyui/src/theming/themes")["dark"],
           "primary": "#1ECAD3",
           "secondary": "#0A2540",
-          "base-100": "#0A2540",     
-          "base-content": "#ffffff",
+          "accent": "#1ECAD3",
+          "neutral": "#3d4451",
+          "base-100": "#ffffff", // লাইট মোড ব্যাকগ্রাউন্ড সাদা
+        },
+        dark: {
+          "primary": "#1ECAD3",
+          "secondary": "#0A2540",
+          "accent": "#1ECAD3",
+          "neutral": "#191D24",
+          "base-100": "#0A2540", // আপনার ব্র্যান্ডের Deep Blue ডার্ক মোড ব্যাকগ্রাউন্ড হিসেবে
+          "base-content": "#ffffff", // ডার্ক মোডে টেক্সট সাদা
         },
       },
     ],
