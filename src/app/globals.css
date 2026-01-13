@@ -13,9 +13,9 @@
 
 
 
-/* Swiper Custom Colors */
+
 :root {
-  --swiper-theme-color: #1ECAD3; /* আপনার Teal কালার */
+  --swiper-theme-color: #1ECAD3; 
   --swiper-navigation-size: 24px;
 }
 

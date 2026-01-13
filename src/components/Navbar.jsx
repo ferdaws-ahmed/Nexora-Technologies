@@ -34,8 +34,8 @@ const Navbar = () => {
 
             src={logo} 
             alt="Nexora Logo" 
-            width={150} // একটি নির্দিষ্ট প্রস্থ দিন
-            height={50} // একটি নির্দিষ্ট উচ্চতা দিন
+            width={150} 
+            height={50} 
             className="object-contain"
         />
     </Link>

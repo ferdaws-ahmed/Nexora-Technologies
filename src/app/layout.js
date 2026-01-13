@@ -22,19 +22,19 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    // suppressHydrationWarning অবশ্যই যোগ করবেন
+  
     <html lang="en" suppressHydrationWarning>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased transition-colors duration-300`}
       >
         <ThemeProvider>
-          {/* পুরো স্ক্রিন জুরে ব্যাকগ্রাউন্ড নিশ্চিত করতে flex layout */}
+        
           <div className="flex flex-col min-h-screen bg-base-100 text-base-content">
             <Navbar />
             <main className="flex-grow">
               {children}
             </main>
-            {/* এখানে ভবিষ্যতে Footer যোগ করতে পারেন */}
+            
           </div>
         </ThemeProvider>
       </body>
