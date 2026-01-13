@@ -1,8 +1,8 @@
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/ThemeProvider";
-import Navbar from "@/components/Navbar";
-
+import Navbar from "@/components/Landing/Navbar";
+import Footer from "@/components/Landing/Footer";
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -16,7 +16,7 @@ const geistMono = Geist_Mono({
 export const metadata = {
   title: "Nexora Technologies",
   icons: {
-    icon: "/Nexora(1).png", 
+    icon: "/Nexora(1).png",
   },
 };
 
@@ -34,7 +34,7 @@ export default function RootLayout({ children }) {
             <main className="flex-grow">
               {children}
             </main>
-            
+            {/* এখানে ভবিষ্যতে Footer যোগ করতে পারেন */}
           </div>
         </ThemeProvider>
       </body>
