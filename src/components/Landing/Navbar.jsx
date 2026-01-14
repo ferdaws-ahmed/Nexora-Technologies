@@ -1,18 +1,19 @@
 "use client";
-import { useTheme } from "next-themes";
+
 import { useEffect, useState } from "react";
 import Link from "next/link";
-import { HiMenuAlt3, HiX } from "react-icons/hi";
-import logo from "../../assets/images/nexora.png";
+import { Menu, X } from "lucide-react";
 import Image from "next/image";
+import logo from "@/assets/images/nexora.png";
 import { navLinks } from "../data/navData";
 
 const Navbar = () => {
-  const { theme, setTheme } = useTheme();
-  const [mounted, setMounted] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
+  const [mounted, setMounted] = useState(false);
 
-  useEffect(() => setMounted(true), []);
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   useEffect(() => {
     if (isOpen) {
@@ -29,7 +30,8 @@ const Navbar = () => {
 
   return (
     <>
-      <nav className="sticky top-0 z-50 w-full border-b border-base-content/10 bg-base-100/70 backdrop-blur-lg">
+      {/* Navbar */}
+      <nav className="sticky top-0 z-50 w-full bg-black/80 backdrop-blur-lg">
         <div className="max-w-7xl mx-auto px-3 sm:px-4 md:px-6 lg:px-8">
           <div className="flex justify-between items-center h-14 sm:h-16 md:h-20">
             {/* Logo Section */}
@@ -45,48 +47,36 @@ const Navbar = () => {
               </Link>
             </div>
 
-            {/* Desktop Menu (Laptop/Desktop) */}
+            {/* Desktop Menu */}
             <div className="hidden lg:flex items-center space-x-6 xl:space-x-8">
               {navLinks.map((link) => (
                 <Link
                   key={link.name}
                   href={link.href}
-                  className="text-xs sm:text-sm font-semibold  tracking-widest hover:text-primary transition-colors"
+                  className="text-xs sm:text-sm font-semibold text-gray-300 hover:text-cyan-400 tracking-widest transition-colors duration-300"
                 >
                   {link.name}
                 </Link>
               ))}
             </div>
 
-            {/* End Section: Toggle & Contact */}
+            {/* Desktop CTA */}
             <div className="hidden md:flex items-center space-x-2 sm:space-x-3 md:space-x-4">
-              <button
-                onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-                className="btn btn-ghost btn-circle btn-sm text-lg sm:text-xl"
-              >
-                {theme === "dark" ? "🌞" : "🌙"}
-              </button>
               <Link
                 href="/contact"
-                className="btn btn-primary btn-sm md:btn-md rounded-full px-4 sm:px-6 md:px-8 text-white shadow-lg shadow-primary/20 text-xs sm:text-sm"
+                className="px-4 sm:px-6 md:px-8 py-2 md:py-3 bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-600 hover:to-blue-700 text-white font-bold rounded-full text-xs sm:text-sm shadow-lg shadow-cyan-500/20 transition-all duration-300"
               >
                 Let's Talk
               </Link>
             </div>
 
-            {/* Mobile/Tablet Menu Button */}
+            {/* Mobile Menu Button */}
             <div className="lg:hidden flex items-center gap-2 sm:gap-3 md:gap-4">
               <button
-                onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-                className="btn btn-ghost btn-circle btn-sm text-lg sm:text-xl"
-              >
-                {theme === "dark" ? "🌞" : "🌙"}
-              </button>
-              <button
                 onClick={() => setIsOpen(!isOpen)}
-                className="text-2xl sm:text-3xl focus:outline-none transition-colors hover:text-primary"
+                className="text-white text-2xl sm:text-3xl hover:text-cyan-400 transition-colors focus:outline-none p-2"
               >
-                {isOpen ? <HiX /> : <HiMenuAlt3 />}
+                {isOpen ? <X size={28} /> : <Menu size={28} />}
               </button>
             </div>
           </div>
@@ -96,27 +86,27 @@ const Navbar = () => {
       {/* Mobile Overlay Backdrop */}
       {isOpen && (
         <div
-          className="fixed inset-0 top-0 z-30 bg-black/50 lg:hidden"
+          className="fixed inset-0 top-16 sm:top-20 z-30 bg-black/50 lg:hidden"
           onClick={() => setIsOpen(false)}
         />
       )}
 
-      {/* Mobile/Tablet Sidebar (Smooth Slide) */}
+      {/* Mobile Sidebar */}
       <div
-        className={`fixed right-0 top-0 h-screen w-64 sm:w-72 z-40 bg-base-100 dark:bg-base-300 transform transition-transform duration-300 ease-in-out lg:hidden ${
+        className={`fixed right-0 top-14 sm:top-16 md:top-20 h-screen w-64 sm:w-72 z-40 bg-black transform transition-transform duration-300 ease-in-out lg:hidden ${
           isOpen ? "translate-x-0" : "translate-x-full"
         }`}
         style={{
-          boxShadow: isOpen ? "-4px 0 15px rgba(0, 0, 0, 0.1)" : "none",
+          boxShadow: isOpen ? "-4px 0 15px rgba(0, 0, 0, 0.3)" : "none",
         }}
       >
         {/* Close Button */}
-        <div className="flex justify-end items-center p-4 sm:p-6 border-b border-base-content/10">
+        <div className="flex justify-end items-center p-4 sm:p-6">
           <button
             onClick={() => setIsOpen(false)}
-            className="text-2xl sm:text-3xl hover:text-primary transition-colors"
+            className="text-white text-2xl sm:text-3xl hover:text-cyan-400 transition-colors"
           >
-            <HiX />
+            <X size={28} />
           </button>
         </div>
 
@@ -127,7 +117,7 @@ const Navbar = () => {
               key={link.name}
               href={link.href}
               onClick={() => setIsOpen(false)}
-              className="w-full text-lg sm:text-xl font-bold hover:text-primary hover:bg-base-200 dark:hover:bg-base-200/20 px-4 py-2 rounded transition-colors"
+              className="w-full text-lg sm:text-xl font-bold text-gray-300 hover:text-cyan-400 hover:bg-cyan-500/10 px-4 py-2 rounded transition-colors duration-300"
             >
               {link.name}
             </Link>
@@ -135,7 +125,7 @@ const Navbar = () => {
           <Link
             href="/contact"
             onClick={() => setIsOpen(false)}
-            className="btn btn-primary btn-sm sm:btn-md rounded-full w-full mt-4 sm:mt-6 text-white"
+            className="w-full mt-4 sm:mt-6 px-4 py-2 sm:py-3 bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-600 hover:to-blue-700 text-white font-bold rounded-full text-center text-sm sm:text-base transition-all duration-300 shadow-lg shadow-cyan-500/20"
           >
             Contact Us
           </Link>

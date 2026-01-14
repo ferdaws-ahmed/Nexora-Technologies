@@ -4,22 +4,25 @@
 @layer base {
   body {
     @apply bg-base-100 text-base-content min-h-screen transition-colors duration-300;
+    font-family: "Nohemi", Arial, Helvetica, sans-serif;
   }
 }
 
-
-
-
-
-
-
 /* Swiper Custom Colors */
 :root {
-  --swiper-theme-color: #1ECAD3; /* আপনার Teal কালার */
+  --swiper-theme-color: #1ecad3; /* আপনার Teal কালার */
   --swiper-navigation-size: 24px;
 }
+@font-face {
+  font-family: "Nohemi";
+  src: url("/fonts/Nohemi/Nohemi-Bold.woff") format("woff");
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
 
-.swiper-button-next, .swiper-button-prev {
+.swiper-button-next,
+.swiper-button-prev {
   background: rgba(255, 255, 255, 0.1);
   width: 50px !important;
   height: 50px !important;
