@@ -14,7 +14,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata = {
-  title: "Nexora Technologies",
+  title: "Xhoraa → Xtreme Horizon Operations Research & AI Applications",
   icons: {
     icon: "/Nexora(1).png",
   },

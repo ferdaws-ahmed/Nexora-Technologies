@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import { Menu, X } from "lucide-react";
 import Image from "next/image";
-import logo from "@/assets/images/nexora.png";
+import logo from "@/assets/images/xhoraa.png";
 import { navLinks } from "../data/navData";
 
 const Navbar = () => {

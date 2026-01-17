@@ -7,7 +7,7 @@ export default function CTASection({ setShowResumeForm }) {
         Don't see the right role?
       </h2>
       <p className="text-gray-300 text-lg mb-8">
-        Send us your resume and tell us how you'd like to contribute to NEXORA.
+        Send us your resume and tell us how you'd like to contribute to XHORAA.
       </p>
       <button
         onClick={() => setShowResumeForm(true)}
