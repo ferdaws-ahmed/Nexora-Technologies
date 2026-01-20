@@ -1,16 +1,16 @@
 "use client";
 
-import { Swiper, SwiperSlide } from "swiper/react";
-import { Autoplay, Pagination, Navigation, EffectFade } from "swiper/modules";
-import { motion, AnimatePresence } from "framer-motion";
-import { useState } from "react";
-import Link from "next/link";
+import { AnimatePresence, motion } from "framer-motion";
 import { ChevronRight, Play } from "lucide-react";
+import Link from "next/link";
+import { useState } from "react";
+import { Autoplay, EffectFade, Navigation, Pagination } from "swiper/modules";
+import { Swiper, SwiperSlide } from "swiper/react";
 
 import "swiper/css";
-import "swiper/css/pagination";
-import "swiper/css/navigation";
 import "swiper/css/effect-fade";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
 import { slides } from "../data/heroData";
 
 const Hero = () => {

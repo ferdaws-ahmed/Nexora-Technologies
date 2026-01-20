@@ -1,3 +1,4 @@
+import BrandSlider from "@/components/Landing/Brand";
 import ContactForm from "@/components/Landing/ContactForm ";
 import FAQ from "@/components/Landing/FAQ";
 import Features from "@/components/Landing/Features/FeaturesMain";
@@ -7,7 +8,9 @@ export default function Home() {
   return (
     <div className="bg-base-100 transition-colors duration-300">
       <Hero />
+      <BrandSlider />
       <Features />
+
       <ContactForm />
       <FAQ />
     </div>
