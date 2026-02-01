@@ -1,5 +1,5 @@
 import React from "react";
-import { footerLinks, socialLinks } from "@/data/footerData";
+import { footerLinks, socialLinks, bottomLinks } from "@/data/footerData";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -74,13 +74,13 @@ const Footer = () => {
           </div>
 
           <div className='flex gap-10'>
-            {["System Status", "Privacy Architecture", "Security Console"].map((item) => (
+            {bottomLinks.map((link) => (
               <a
-                key={item}
-                href='#'
+                key={link.name}
+                href={link.href}
                 className='text-gray-500 text-[10px] uppercase font-bold tracking-widest hover:text-white transition-colors duration-300'
               >
-                {item}
+                {link.name}
               </a>
             ))}
           </div>

@@ -5,7 +5,7 @@ import ProjectFilter from "./ProjectFilter";
 import ProjectsGrid from "./ProjectsGrid";
 import ProjectsStats from "./ProjectsStats";
 import ProjectModal from "./ProjectModal";
-import { projectsData } from "../../data/projectData";
+import { projectsData } from "@/data/projectData";
 
 export default function ProjectsMain() {
   const [selectedCategory, setSelectedCategory] = useState("all");
@@ -28,7 +28,7 @@ export default function ProjectsMain() {
 
       <ProjectsGrid projects={filtered} onSelect={setSelectedProject} />
 
-      <ProjectsStats />
+      {/* <ProjectsStats /> */}
 
       {selectedProject && <ProjectModal project={selectedProject} onClose={() => setSelectedProject(null)} />}
     </div>

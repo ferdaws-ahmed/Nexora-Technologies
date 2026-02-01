@@ -2,42 +2,32 @@ import { motion } from "framer-motion";
 
 export default function ProjectFilter({ categories, selected, setSelected }) {
   return (
-    <section className="w-full px-4 py-6">
-     
-      <div className="flex overflow-x-auto no-scrollbar md:flex-wrap md:justify-center items-center gap-3 pb-4 md:pb-0 scroll-smooth">
-        
-        {categories.map((cat) => {
-          const isActive = selected === cat;
-
-          return (
-            <motion.button
-              key={cat}
-              whileTap={{ scale: 0.95 }}
-              onClick={() => setSelected(cat)}
-              className={`relative flex-shrink-0 px-5 py-2.5 rounded-xl text-sm font-bold transition-all duration-300 border whitespace-nowrap ${
-                isActive
-                  ? "text-white border-transparent shadow-lg shadow-cyan-500/20"
-                  : "text-slate-400 border-slate-800 bg-slate-900/40 hover:text-white"
-              }`}
-            >
-              {/* Active Background */}
-              {isActive && (
-                <motion.div
-                  layoutId="activeFilter"
-                  className="absolute inset-0 bg-gradient-to-r from-cyan-600 to-blue-700 rounded-xl -z-10"
-                  transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
-                />
-              )}
-              
-              <span className="capitalize">{cat}</span>
-            </motion.button>
-          );
-        })}
-      </div>
-
-     
-      <div className="w-full h-[2px] bg-slate-900 mt-2 md:hidden">
-         <div className="w-1/3 h-full bg-slate-700 mx-auto rounded-full" />
+    <section className='w-full px-4 sm:px-6 lg:px-8 py-8'>
+      <div className='container mx-auto'>
+        <div className='flex flex-nowrap md:flex-wrap overflow-x-auto md:overflow-visible no-scrollbar md:justify-center items-center gap-2 p-1.5 w-full max-w-5xl mx-auto'>
+          {categories.map((cat) => {
+            const isActive = selected === cat;
+            return (
+              <motion.button
+                key={cat}
+                whileTap={{ scale: 0.95 }}
+                onClick={() => setSelected(cat)}
+                className={`relative px-6 py-2.5 text-sm font-bold transition-all duration-300 bg-white/5 backdrop-blur-md border border-white/10 rounded-2xl  whitespace-nowrap ${
+                  isActive ? "text-black" : "text-gray-400 hover:text-white"
+                }`}
+              >
+                {isActive && (
+                  <motion.div
+                    layoutId='activeFilter'
+                    className='absolute inset-0 bg-nexora-teal rounded-xl -z-10'
+                    transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
+                  />
+                )}
+                <span className='capitalize relative z-10'>{cat}</span>
+              </motion.button>
+            );
+          })}
+        </div>
       </div>
     </section>
   );

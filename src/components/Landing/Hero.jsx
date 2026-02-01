@@ -100,7 +100,7 @@ const Hero = () => {
 
                   <motion.div variants={itemVariants} className='flex flex-wrap gap-5'>
                     <Link
-                      href='/services'
+                      href='/contact-us'
                       className='group relative px-10 py-4 bg-nexora-teal text-black font-bold rounded-xl overflow-hidden transition-all duration-300 hover:scale-[1.02] active:scale-[0.98]'
                     >
                       <span className='relative z-10 flex items-center gap-2'>
@@ -110,7 +110,7 @@ const Hero = () => {
                     </Link>
 
                     <Link
-                      href='/contact'
+                      href='/services'
                       className='group px-10 py-4 border border-white/20 hover:border-white/40 text-white font-bold rounded-xl backdrop-blur-sm transition-all flex items-center gap-2'
                     >
                       <span>Explore Services</span>

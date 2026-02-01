@@ -51,9 +51,9 @@ const Navbar = () => {
   }, [isOpen]);
 
   const navLinks = [
-    { name: "Home", href: "/" },
     { name: "Services", href: "/services" },
-    { name: "About", href: "/about" },
+    { name: "About", href: "/about-us" },
+    { name: "Projects", href: "/projects" },
     { name: "Blog", href: "/blog" },
   ];
 
@@ -91,7 +91,7 @@ const Navbar = () => {
             {/* Desktop CTA */}
             <div className='hidden md:flex items-center'>
               <Link
-                href='/contact'
+                href='/contact-us'
                 className='group relative px-8 py-2.5 bg-nexora-teal text-black font-bold rounded-full text-sm overflow-hidden transition-all duration-300 hover:scale-105 active:scale-95'
               >
                 <span className='relative z-10'>Let&apos;s Talk</span>
@@ -135,7 +135,7 @@ const Navbar = () => {
               </Link>
             ))}
             <Link
-              href='/contact'
+              href='/contact-us'
               onClick={() => setIsOpen(false)}
               className='mt-8 px-6 py-4 bg-nexora-teal text-black font-bold rounded-xl text-center shadow-lg shadow-nexora-teal/20 transition-all active:scale-95'
             >
