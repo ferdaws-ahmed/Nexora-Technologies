@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
-import { servicesData } from "../data/servicesData";
+import { servicesData } from "../../data/servicesData";
 
 export default function ServicesGrid({ selectedService, setSelectedService }) {
   const [hoveredCard, setHoveredCard] = useState(null);
@@ -21,14 +21,14 @@ export default function ServicesGrid({ selectedService, setSelectedService }) {
   };
 
   return (
-    <section className="relative px-4 sm:px-6 lg:px-8 py-16">
-      <div className="max-w-7xl mx-auto">
+    <section className='relative px-4 sm:px-6 lg:px-8 py-16'>
+      <div className='max-w-7xl mx-auto'>
         <motion.div
           variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
+          initial='hidden'
+          whileInView='visible'
           viewport={{ once: true, margin: "-100px" }}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+          className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6'
         >
           {servicesData.map((service, index) => {
             const ServiceIcon = service.icon;
@@ -39,7 +39,7 @@ export default function ServicesGrid({ selectedService, setSelectedService }) {
                 onMouseEnter={() => setHoveredCard(index)}
                 onMouseLeave={() => setHoveredCard(null)}
                 onClick={() => setSelectedService(index)}
-                className="group relative cursor-pointer"
+                className='group relative cursor-pointer'
               >
                 <div
                   className={`absolute inset-0 bg-gradient-to-br from-slate-800/50 to-slate-900/50 rounded-2xl border transition-all duration-300 ${
@@ -60,9 +60,7 @@ export default function ServicesGrid({ selectedService, setSelectedService }) {
 
                 <div
                   className={`relative p-8 transition-transform duration-300 ${
-                    selectedService === index
-                      ? "translate-y-0"
-                      : "group-hover:translate-y--2"
+                    selectedService === index ? "translate-y-0" : "group-hover:translate-y--2"
                   }`}
                 >
                   <motion.div
@@ -71,29 +69,22 @@ export default function ServicesGrid({ selectedService, setSelectedService }) {
                     transition={{ duration: 0.3 }}
                     className={`w-14 h-14 rounded-xl bg-gradient-to-br ${service.color} p-2.5 mb-4 flex items-center justify-center`}
                   >
-                    <ServiceIcon className="w-7 h-7 text-white" />
+                    <ServiceIcon className='w-7 h-7 text-white' />
                   </motion.div>
 
                   <h3
                     className={`text-2xl font-bold mb-2 transition-colors ${
-                      selectedService === index
-                        ? "text-cyan-400"
-                        : "text-white group-hover:text-cyan-400"
+                      selectedService === index ? "text-cyan-400" : "text-white group-hover:text-cyan-400"
                     }`}
                   >
                     {service.title}
                   </h3>
 
-                  <p className="text-gray-400 text-sm mb-4">
-                    {service.shortDesc}
-                  </p>
+                  <p className='text-gray-400 text-sm mb-4'>{service.shortDesc}</p>
 
-                  <div className="flex items-center gap-2 text-cyan-400">
-                    <span className="text-sm font-semibold">Learn More</span>
-                    <ArrowRight
-                      size={18}
-                      className="group-hover:translate-x-1 transition-transform"
-                    />
+                  <div className='flex items-center gap-2 text-cyan-400'>
+                    <span className='text-sm font-semibold'>Learn More</span>
+                    <ArrowRight size={18} className='group-hover:translate-x-1 transition-transform' />
                   </div>
                 </div>
               </motion.div>

@@ -5,7 +5,7 @@ import BenefitsSection from "./BenefitsSection";
 import JobFilters from "./JobFilters";
 import ResumeFormModal from "./ResumeFormModal";
 import JobListings from "./JobListings";
-import { jobs } from "../data/Careers";
+import { jobs } from "../../data/Careers";
 import CTASection from "./CTASection";
 
 export default function Careers() {
@@ -17,10 +17,8 @@ export default function Careers() {
 
   const filteredJobs = jobs.filter((job) => {
     const matchesSearch =
-      job.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      job.department.toLowerCase().includes(searchTerm.toLowerCase());
-    const matchesDepartment =
-      selectedDepartment === "all" || job.department === selectedDepartment;
+      job.title.toLowerCase().includes(searchTerm.toLowerCase()) || job.department.toLowerCase().includes(searchTerm.toLowerCase());
+    const matchesDepartment = selectedDepartment === "all" || job.department === selectedDepartment;
     const matchesLevel = selectedLevel === "all" || job.level === selectedLevel;
     return matchesSearch && matchesDepartment && matchesLevel;
   });
@@ -29,7 +27,7 @@ export default function Careers() {
   const levels = ["all", ...new Set(jobs.map((job) => job.level))];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900">
+    <div className='min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900'>
       <HeroSection />
       <BenefitsSection />
       <JobFilters
@@ -42,11 +40,7 @@ export default function Careers() {
         departments={departments}
         levels={levels}
       />
-      <JobListings
-        filteredJobs={filteredJobs}
-        expandedJob={expandedJob}
-        setExpandedJob={setExpandedJob}
-      />
+      <JobListings filteredJobs={filteredJobs} expandedJob={expandedJob} setExpandedJob={setExpandedJob} />
       <CTASection setShowResumeForm={setShowResumeForm} />
       <ResumeFormModal show={showResumeForm} setShow={setShowResumeForm} />
     </div>

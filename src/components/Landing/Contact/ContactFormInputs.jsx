@@ -1,9 +1,9 @@
 "use client";
 
 import { useState } from "react";
-import { motion } from "framer-motion";
-import { Send, CheckCircle } from "lucide-react";
-import { services } from "@/components/data/contactData";
+import { motion, AnimatePresence } from "framer-motion";
+import { Send, CheckCircle, ArrowRight } from "lucide-react";
+import { services } from "@/data/contactData";
 
 const itemVariants = {
   hidden: { opacity: 0, y: 20 },
@@ -27,8 +27,7 @@ const ContactFormInput = () => {
     const newErrors = {};
     if (!formData.fullName.trim()) newErrors.fullName = "Name is required";
     if (!formData.email.trim()) newErrors.email = "Email is required";
-    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email))
-      newErrors.email = "Invalid email";
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) newErrors.email = "Invalid email";
     if (!formData.phone.trim()) newErrors.phone = "Phone is required";
     if (!formData.service) newErrors.service = "Service is required";
     if (!formData.message.trim()) newErrors.message = "Message is required";
@@ -68,31 +67,31 @@ const ContactFormInput = () => {
   };
 
   return (
-    <div className="relative bg-gradient-to-br from-slate-800/50 to-slate-900/50 border border-slate-700/50 rounded-2xl p-8 lg:p-12">
-      <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/5 to-purple-500/5 rounded-2xl pointer-events-none" />
+    <div className='relative bg-white/5 border border-white/5 rounded-2xl p-8 lg:p-12 overflow-hidden'>
+      {/* Subtle Glow inside form */}
+      <div className='absolute -top-24 -right-24 w-48 h-48 bg-nexora-teal/10 blur-[100px] pointer-events-none' />
 
       {!isSubmitted ? (
-        <div className="relative space-y-6">
+        <div className='relative space-y-8'>
           {/* Name & Email */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+          <div className='grid grid-cols-1 sm:grid-cols-2 gap-8'>
             <motion.div
               initial={{ opacity: 0, y: 10 }}
               whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
               transition={{ delay: 0.1 }}
             >
-              <label className="block text-sm font-semibold text-white mb-3">
-                Full Name <span className="text-cyan-400">*</span>
+              <label className='block text-[10px] font-bold text-gray-500 uppercase tracking-widest mb-4'>
+                Full Name <span className='text-nexora-teal'>*</span>
               </label>
               <input
-                type="text"
-                name="fullName"
+                type='text'
+                name='fullName'
                 value={formData.fullName}
                 onChange={handleChange}
-                placeholder="John Doe"
-                className={`w-full px-4 py-3 rounded-lg bg-slate-900/50 border transition-all duration-300 text-white placeholder-gray-500 focus:outline-none ${
-                  errors.fullName
-                    ? "border-red-500/50 focus:border-red-500"
-                    : "border-slate-700/50 focus:border-cyan-500/50"
+                placeholder='John Doe'
+                className={`w-full px-0 py-3 bg-transparent border-b transition-all duration-500 text-white placeholder-gray-700 focus:outline-none ${
+                  errors.fullName ? "border-red-500/50 focus:border-red-500" : "border-white/10 focus:border-nexora-teal"
                 }`}
               />
             </motion.div>
@@ -100,68 +99,62 @@ const ContactFormInput = () => {
             <motion.div
               initial={{ opacity: 0, y: 10 }}
               whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
               transition={{ delay: 0.2 }}
             >
-              <label className="block text-sm font-semibold text-white mb-3">
-                Email <span className="text-cyan-400">*</span>
+              <label className='block text-[10px] font-bold text-gray-500 uppercase tracking-widest mb-4'>
+                Email Address <span className='text-nexora-teal'>*</span>
               </label>
               <input
-                type="email"
-                name="email"
+                type='email'
+                name='email'
                 value={formData.email}
                 onChange={handleChange}
-                placeholder="john@example.com"
-                className={`w-full px-4 py-3 rounded-lg bg-slate-900/50 border transition-all duration-300 text-white placeholder-gray-500 focus:outline-none ${
-                  errors.email
-                    ? "border-red-500/50 focus:border-red-500"
-                    : "border-slate-700/50 focus:border-cyan-500/50"
+                placeholder='john@example.com'
+                className={`w-full px-0 py-3 bg-transparent border-b transition-all duration-500 text-white placeholder-gray-700 focus:outline-none ${
+                  errors.email ? "border-red-500/50 focus:border-red-500" : "border-white/10 focus:border-nexora-teal"
                 }`}
               />
             </motion.div>
           </div>
 
           {/* Phone & Company */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+          <div className='grid grid-cols-1 sm:grid-cols-2 gap-8'>
             <motion.div
               initial={{ opacity: 0, y: 10 }}
               whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
               transition={{ delay: 0.3 }}
             >
-              <label className="block text-sm font-semibold text-white mb-3">
-                Phone <span className="text-cyan-400">*</span>
+              <label className='block text-[10px] font-bold text-gray-500 uppercase tracking-widest mb-4'>
+                Phone Number <span className='text-nexora-teal'>*</span>
               </label>
               <input
-                type="tel"
-                name="phone"
+                type='tel'
+                name='phone'
                 value={formData.phone}
                 onChange={handleChange}
-                placeholder="+880 1929-559902"
-                className={`w-full px-4 py-3 rounded-lg bg-slate-900/50 border transition-all duration-300 text-white placeholder-gray-500 focus:outline-none ${
-                  errors.phone
-                    ? "border-red-500/50 focus:border-red-500"
-                    : "border-slate-700/50 focus:border-cyan-500/50"
+                placeholder='+1 (555) 000-0000'
+                className={`w-full px-0 py-3 bg-transparent border-b transition-all duration-500 text-white placeholder-gray-700 focus:outline-none ${
+                  errors.phone ? "border-red-500/50 focus:border-red-500" : "border-white/10 focus:border-nexora-teal"
                 }`}
               />
-              {errors.phone && (
-                <p className="text-red-400 text-sm mt-2">{errors.phone}</p>
-              )}
             </motion.div>
 
             <motion.div
               initial={{ opacity: 0, y: 10 }}
               whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
               transition={{ delay: 0.4 }}
             >
-              <label className="block text-sm font-semibold text-white mb-3">
-                Company (Optional)
-              </label>
+              <label className='block text-[10px] font-bold text-gray-500 uppercase tracking-widest mb-4'>Company (Optional)</label>
               <input
-                type="text"
-                name="company"
+                type='text'
+                name='company'
                 value={formData.company}
                 onChange={handleChange}
-                placeholder="Your Company"
-                className="w-full px-4 py-3 rounded-lg bg-slate-900/50 border border-slate-700/50 transition-all duration-300 text-white placeholder-gray-500 focus:outline-none focus:border-cyan-500/50"
+                placeholder='Your Organization'
+                className='w-full px-0 py-3 bg-transparent border-b border-white/10 focus:border-nexora-teal transition-all duration-500 text-white placeholder-gray-700 focus:outline-none'
               />
             </motion.div>
           </div>
@@ -170,96 +163,90 @@ const ContactFormInput = () => {
           <motion.div
             initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
             transition={{ delay: 0.5 }}
           >
-            <label className="block text-sm font-semibold text-white mb-3">
-              Service <span className="text-cyan-400">*</span>
+            <label className='block text-[10px] font-bold text-gray-500 uppercase tracking-widest mb-4'>
+              Interested Service <span className='text-nexora-teal'>*</span>
             </label>
-            <select
-              name="service"
-              value={formData.service}
-              onChange={handleChange}
-              className={`w-full px-4 py-3 rounded-lg bg-slate-900/50 border transition-all duration-300 text-white placeholder-gray-500 focus:outline-none ${
-                errors.service
-                  ? "border-red-500/50 focus:border-red-500"
-                  : "border-slate-700/50 focus:border-cyan-500/50"
-              }`}
-            >
-              <option value="">Select a service</option>
-              {services.map((service) => (
-                <option key={service} value={service}>
-                  {service}
+            <div className='relative'>
+              <select
+                name='service'
+                value={formData.service}
+                onChange={handleChange}
+                className={`w-full px-0 py-3 bg-transparent border-b transition-all duration-500 text-white appearance-none focus:outline-none ${
+                  errors.service ? "border-red-500/50 focus:border-red-500" : "border-white/10 focus:border-nexora-teal"
+                }`}
+              >
+                <option value='' className='bg-black text-gray-500'>
+                  Select a service
                 </option>
-              ))}
-            </select>
-            {errors.service && (
-              <p className="text-red-400 text-sm mt-2">{errors.service}</p>
-            )}
+                {services.map((service) => (
+                  <option key={service} value={service} className='bg-black text-white'>
+                    {service}
+                  </option>
+                ))}
+              </select>
+            </div>
           </motion.div>
 
           {/* Message */}
           <motion.div
             initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
             transition={{ delay: 0.6 }}
           >
-            <label className="block text-sm font-semibold text-white mb-3">
-              Message <span className="text-cyan-400">*</span>
+            <label className='block text-[10px] font-bold text-gray-500 uppercase tracking-widest mb-4'>
+              Project Brief <span className='text-nexora-teal'>*</span>
             </label>
             <textarea
-              name="message"
+              name='message'
               value={formData.message}
               onChange={handleChange}
-              placeholder="Tell us more about your project..."
-              rows="5"
-              className={`w-full px-4 py-3 rounded-lg bg-slate-900/50 border transition-all duration-300 text-white placeholder-gray-500 focus:outline-none resize-none ${
-                errors.message
-                  ? "border-red-500/50 focus:border-red-500"
-                  : "border-slate-700/50 focus:border-cyan-500/50"
+              placeholder='Tell us more about your objectives...'
+              rows='4'
+              className={`w-full px-0 py-3 bg-transparent border-b transition-all duration-500 text-white placeholder-gray-700 focus:outline-none resize-none ${
+                errors.message ? "border-red-500/50 focus:border-red-500" : "border-white/10 focus:border-nexora-teal"
               }`}
             />
-            {errors.message && (
-              <p className="text-red-400 text-sm mt-2">{errors.message}</p>
-            )}
           </motion.div>
-          {/* ... Continue with other inputs same as original ... */}
 
           <motion.button
             initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
             transition={{ delay: 0.7 }}
-            whileHover={{ scale: 1.02 }}
-            whileTap={{ scale: 0.98 }}
+            whileHover={{ scale: 1.01 }}
+            whileTap={{ scale: 0.99 }}
             onClick={handleSubmit}
             disabled={isLoading}
-            className="w-full px-8 py-4 bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-600 hover:to-blue-700 disabled:from-gray-600 disabled:to-gray-700 text-white font-bold rounded-lg transition-all duration-300 hover:shadow-lg hover:shadow-cyan-500/50 flex items-center justify-center gap-2 group"
+            className='w-full px-8 py-5 bg-nexora-teal rounded-xl cursor-pointer text-black font-bold uppercase tracking-widest text-[14px] transition-all duration-500 flex items-center justify-center gap-3 group relative overflow-hidden'
           >
             {isLoading ? (
               <>
-                <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin"></div>
-                Sending...
+                <div className='w-4 h-4 border-2 border-black/30 border-t-black rounded-full animate-spin'></div>
+                Processing
               </>
             ) : (
               <>
-                Send Message{" "}
-                <Send
-                  size={20}
-                  className="group-hover:translate-x-1 transition-transform"
-                />
+                Initiate Project <ArrowRight size={18} className='group-hover:translate-x-1 transition-transform' />
               </>
             )}
           </motion.button>
         </div>
       ) : (
-        /* Success message (original) */
-        <div className="relative flex flex-col items-center justify-center py-12 text-center">
-          <div className="w-20 h-20 rounded-full bg-gradient-to-br from-cyan-500 to-blue-600 flex items-center justify-center mb-6">
-            <CheckCircle size={48} className="text-white" />
-          </div>
-          <h3 className="text-3xl font-bold text-white mb-3">Message Sent!</h3>
-          <p className="text-gray-400 mb-2">Thank you for reaching out.</p>
-          <p className="text-gray-400 mb-6">
-            We'll get back to you within 2 hours.
+        <div className='relative flex flex-col items-center justify-center py-20 text-center'>
+          <motion.div
+            initial={{ scale: 0.5, opacity: 0 }}
+            animate={{ scale: 1, opacity: 1 }}
+            className='w-24 h-24 rounded-full bg-nexora-teal/10 border border-nexora-teal/30 flex items-center justify-center mb-10'
+          >
+            <CheckCircle size={40} className='text-nexora-teal' />
+          </motion.div>
+          <h3 className='text-3xl font-bold text-white mb-4 tracking-tight uppercase'>Inquiry Received</h3>
+          <p className='text-gray-500 font-light max-w-sm mx-auto uppercase tracking-widest text-[10px]'>
+            Thank you for reaching out. An intelligence specialist will contact you within 2 business hours.
           </p>
         </div>
       )}
