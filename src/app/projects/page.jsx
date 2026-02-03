@@ -1,12 +1,12 @@
 import ProjectsMain from "@/components/Projects/ProjectMain";
 import React from "react";
 
-function page() {
+const ProjectsPage = () => {
   return (
-    <div>
+    <div className='min-h-screen bg-black transition-colors duration-300 capitalize'>
       <ProjectsMain />
     </div>
   );
-}
+};
 
-export default page;
+export default ProjectsPage;

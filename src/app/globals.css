@@ -1,25 +1,40 @@
 @import "tailwindcss";
 @plugin "daisyui";
 
+@theme {
+  --color-nexora-blue: #0A2540;
+  --color-nexora-teal: #1ECAD3;
+  --font-poppins: var(--font-poppins), sans-serif;
+}
+
+/* DaisyUI Theme Configuration */
 @layer base {
-  body {
-    @apply bg-base-100 text-base-content min-h-screen transition-colors duration-300;
-    font-family: "Nohemi", Arial, Helvetica, sans-serif;
+  :root,
+  [data-theme="light"] {
+    --color-primary: #1ECAD3;
+    --color-secondary: #0A2540;
+    --color-accent: #1ECAD3;
+    --color-neutral: #3d4451;
+    --color-base-100: #ffffff;
+  }
+
+  [data-theme="dark"] {
+    --color-primary: #1ECAD3;
+    --color-secondary: #0A2540;
+    --color-accent: #1ECAD3;
+    --color-neutral: #191D24;
+    --color-base-100: #0A2540;
+    --color-base-content: #ffffff;
   }
 }
 
 /* Swiper Custom Colors */
 :root {
-  --swiper-theme-color: #1ecad3; /* আপনার Teal কালার */
+  --swiper-theme-color: #1ecad3;
+  /* আপনার Teal কালার */
   --swiper-navigation-size: 24px;
 }
-@font-face {
-  font-family: "Nohemi";
-  src: url("/fonts/Nohemi/Nohemi-Bold.woff") format("woff");
-  font-weight: 900;
-  font-style: normal;
-  font-display: swap;
-}
+
 
 .swiper-button-next,
 .swiper-button-prev {
@@ -34,4 +49,14 @@
 .swiper-pagination-bullet-active {
   width: 30px !important;
   border-radius: 10px !important;
+}
+
+@layer utilities {
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
 }

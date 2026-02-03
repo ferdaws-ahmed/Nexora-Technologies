@@ -1,12 +1,19 @@
-import AboutUs from "@/components/About/aboutUs";
-import React from "react";
+import CoreServices from "@/components/About/CoreServices";
+import CoreValues from "@/components/About/CoreValues";
+import CTASection from "@/components/About/CTASection";
+import HeroSection from "@/components/About/HeroSection";
+import IndustryOverview from "@/components/About/IndustryOverview";
+import MissionVision from "@/components/About/MissionVision";
 
-function page() {
+export default function AboutUs() {
   return (
-    <div>
-      <AboutUs />
+    <div className='min-h-screen bg-black transition-colors duration-300'>
+      <HeroSection />
+      <MissionVision />
+      {/* <CoreValues /> */}
+      {/* <CoreServices /> */}
+      <IndustryOverview />
+      <CTASection />
     </div>
   );
 }
-
-export default page;

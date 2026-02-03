@@ -3,8 +3,8 @@ import { motion } from "framer-motion";
 
 export default function MissionVision() {
   return (
-    <section className="px-4 sm:px-6 lg:px-8 py-16">
-      <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8">
+    <section className='px-4 sm:px-6 lg:px-8 py-16 bg-black'>
+      <div className='max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8'>
         {[
           {
             title: "Our Mission",
@@ -17,16 +17,14 @@ export default function MissionVision() {
         ].map((item, idx) => (
           <motion.div
             key={idx}
-            initial={{ opacity: 0, y: 50 }}
+            initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: idx * 0.2 }}
-            className="bg-slate-800/50 backdrop-blur border border-blue-500/20 rounded-lg p-8 hover:border-blue-500/40 transition"
+            transition={{ duration: 0.8, delay: idx * 0.2, ease: [0.16, 1, 0.3, 1] }}
+            className='bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-8 hover:border-nexora-teal/50 transition-all duration-500 group'
           >
-            <h2 className="text-2xl sm:text-3xl font-bold text-blue-400 mb-4">
-              {item.title}
-            </h2>
-            <p className="text-gray-300 leading-relaxed">{item.text}</p>
+            <h2 className='text-3xl font-bold text-white mb-4 group-hover:text-nexora-teal transition-colors'>{item.title}</h2>
+            <p className='text-gray-400 leading-relaxed font-light'>{item.text}</p>
           </motion.div>
         ))}
       </div>
