@@ -1,31 +1,37 @@
-import { Poppins } from "next/font/google";
+import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import { ThemeProvider } from "@/providers/ThemeProvider";
+import { ThemeProvider } from "@/components/ThemeProvider";
 import Navbar from "@/components/Landing/Navbar";
 import Footer from "@/components/Landing/Footer";
-
-const poppins = Poppins({
-  variable: "--font-poppins",
+const geistSans = Geist({
+  variable: "--font-geist-sans",
   subsets: ["latin"],
-  weight: ["300", "400", "500", "600", "700"],
+});
+
+const geistMono = Geist_Mono({
+  variable: "--font-geist-mono",
+  subsets: ["latin"],
 });
 
 export const metadata = {
   title: "Xhoraa → Xtreme Horizon Operations Research & AI Applications",
-  description:
-    "Nexora Technologies is a leading software development company based in Bangladesh. We specialize in providing high-quality software development services to businesses of all sizes.",
+  icons: {
+    icon: "/Nexora(1).png",
+  },
 };
 
 export default function RootLayout({ children }) {
   return (
     // suppressHydrationWarning অবশ্যই যোগ করবেন
-    <html lang='en' suppressHydrationWarning>
-      <body className={`${poppins.variable} font-poppins antialiased`}>
+    <html lang="en" suppressHydrationWarning>
+      <body
+        className={`${geistSans.variable} ${geistMono.variable} antialiased transition-colors duration-300`}
+      >
         <ThemeProvider>
           {/* পুরো স্ক্রিন জুরে ব্যাকগ্রাউন্ড নিশ্চিত করতে flex layout */}
-          <div className='flex flex-col min-h-screen bg-base-100 text-base-content'>
+          <div className="flex flex-col min-h-screen bg-base-100 text-base-content">
             <Navbar />
-            <main className='flex-grow'>{children}</main>
+            <main className="flex-grow">{children}</main>
             <Footer />
           </div>
         </ThemeProvider>

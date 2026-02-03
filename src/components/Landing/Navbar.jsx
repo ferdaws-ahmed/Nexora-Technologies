@@ -1,42 +1,17 @@
 "use client";
 
+import logo from "@/assets/images/xhoraa.png";
 import { Menu, X } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-import { useEffect, useState, useRef } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { useEffect, useState } from "react";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const [isScrolled, setIsScrolled] = useState(false);
-  const [isVisible, setIsVisible] = useState(true);
-  const lastScrollY = useRef(0);
+  const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
-    const handleScroll = () => {
-      const currentScrollY = window.scrollY;
-
-      // Update background state (glassy vs transparent)
-      if (currentScrollY > 20) {
-        setIsScrolled(true);
-      } else {
-        setIsScrolled(false);
-      }
-
-      // Hide/Show logic
-      if (currentScrollY > lastScrollY.current && currentScrollY > 100) {
-        // Scrolling down - hide
-        setIsVisible(false);
-      } else {
-        // Scrolling up - show
-        setIsVisible(true);
-      }
-
-      lastScrollY.current = currentScrollY;
-    };
-
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    return () => window.removeEventListener("scroll", handleScroll);
+    setMounted(true);
   }, []);
 
   useEffect(() => {
@@ -50,174 +25,138 @@ const Navbar = () => {
     };
   }, [isOpen]);
 
+  if (!mounted) return null;
+
   const navLinks = [
+    { name: "Home", href: "/" },
     { name: "Services", href: "/services" },
-    { name: "About", href: "/about-us" },
-    { name: "Projects", href: "/projects" },
+    { name: "About", href: "/about" },
+    { name: "Blog", href: "/blog" },
   ];
-
-  const sidebarVariants = {
-    closed: {
-      x: "100%",
-      opacity: 0,
-      transition: {
-        type: "spring",
-        stiffness: 400,
-        damping: 40,
-      },
-    },
-    open: {
-      x: 0,
-      opacity: 1,
-      transition: {
-        type: "spring",
-        stiffness: 400,
-        damping: 40,
-        staggerChildren: 0.07,
-        delayChildren: 0.2,
-      },
-    },
-  };
-
-  const linkVariants = {
-    closed: { x: 50, opacity: 0 },
-    open: { x: 0, opacity: 1 },
-  };
 
   return (
     <>
-      <motion.nav
-        initial={{ y: 0 }}
-        animate={{
-          y: isVisible ? 0 : -100,
-          backgroundColor: isScrolled ? "rgba(0, 0, 0, 0.4)" : "rgba(0, 0, 0, 0)",
-          backdropFilter: isScrolled ? "blur(20px)" : "blur(0px)",
-        }}
-        transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
-        className='fixed top-0 z-50 w-full transition-colors duration-500'
-      >
-        <div className='container mx-auto px-4 md:px-0'>
-          <div className='flex justify-between items-center h-16 md:h-20'>
+      {/* Navbar */}
+      <nav className="absolute top-0 z-50 w-full ">
+        <div className="max-w-7xl mx-auto px-3 sm:px-4 md:px-6 lg:px-8">
+          <div className="flex justify-between items-center h-14 sm:h-16 md:h-20">
             {/* Logo Section */}
-            <div className='flex-shrink-0 flex items-center'>
-              <Link href='/' className='hover:opacity-80 transition-all duration-300 hover:scale-105'>
-                <Image src={"/images/xhoraa.png"} alt='Xhoraa Logo' width={160} height={80} className='object-contain' />
+            <div className="flex-shrink-0 flex items-center">
+              <Link
+                href="/"
+                className="hover:opacity-80 transition-all duration-300 hover:scale-105 hover:-translate-y-1"
+              >
+                <Image
+                  src={logo}
+                  alt="Xhoraa Logo"
+                  width={120}
+                  height={40}
+                  className="object-contain w-auto h-auto"
+                />
               </Link>
             </div>
 
             {/* Desktop Menu */}
-            <div className='hidden lg:flex items-center space-x-10 xl:space-x-12'>
+            <div className="hidden lg:flex items-center space-x-6 xl:space-x-8">
               {navLinks.map((link) => (
-                <Link key={link.name} href={link.href} className='relative text-sm font-medium text-gray-300 group'>
-                  <span className='relative inline-block transition-colors duration-300 group-hover:text-white'>{link.name}</span>
-                  <span className='absolute -bottom-1 left-0 w-0 h-0.5 bg-nexora-teal transition-all duration-500 group-hover:w-full'></span>
+                <Link
+                  key={link.name}
+                  href={link.href}
+                  className="relative text-sm font-semibold text-gray-300 group"
+                >
+                  <span className="relative inline-block transition-colors duration-300 group-hover:text-cyan-400">
+                    {link.name}
+                  </span>
+
+                  {/* Animated Underline */}
+                  <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-cyan-400 to-blue-500 group-hover:w-full transition-all duration-500"></span>
+
+                  {/* Glow Effect */}
+                  <span className="absolute inset-0 bg-gradient-to-r from-cyan-400/0 via-cyan-400/5 to-blue-500/0 opacity-0 group-hover:opacity-100 rounded-lg transition-opacity duration-300 blur-lg"></span>
                 </Link>
               ))}
             </div>
 
             {/* Desktop CTA */}
-            <div className='hidden md:flex items-center'>
+            <div className="hidden md:flex items-center space-x-2 sm:space-x-3 md:space-x-4">
               <Link
-                href='/contact-us'
-                className='group relative px-8 py-2.5 bg-nexora-teal text-black font-bold rounded-full text-sm overflow-hidden transition-all duration-300 hover:scale-105 active:scale-95'
+                href="/contact"
+                className="group relative px-4 sm:px-6 md:px-8 py-2 md:py-3 bg-gradient-to-r from-cyan-500 to-blue-600 text-white font-bold rounded-full text-xs sm:text-sm shadow-lg shadow-cyan-500/20 transition-all duration-300 hover:shadow-cyan-500/50 hover:shadow-2xl hover:scale-105 hover:-translate-y-1 overflow-hidden"
               >
-                <span className='relative z-10'>Let&apos;s Talk</span>
-                <div className='absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300' />
+                {/* Shimmer Effect */}
+                <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700"></span>
+                <span className="relative">Let's Talk</span>
               </Link>
             </div>
 
             {/* Mobile Menu Button */}
-            <div className='lg:hidden flex items-center'>
+            <div className="lg:hidden flex items-center gap-2 sm:gap-3 md:gap-4">
               <button
                 onClick={() => setIsOpen(!isOpen)}
-                className='text-white p-2 transition-all duration-300 hover:text-nexora-teal active:scale-90 relative z-70'
+                className="text-white text-2xl sm:text-3xl hover:text-cyan-400 transition-all duration-300 hover:scale-110 hover:rotate-90 p-2"
               >
-                <AnimatePresence mode='wait'>
-                  {isOpen ? (
-                    <motion.div
-                      key='close'
-                      initial={{ rotate: -90, opacity: 0 }}
-                      animate={{ rotate: 0, opacity: 1 }}
-                      exit={{ rotate: 90, opacity: 0 }}
-                      transition={{ duration: 0.2 }}
-                    >
-                      <X size={28} />
-                    </motion.div>
-                  ) : (
-                    <motion.div
-                      key='menu'
-                      initial={{ rotate: 90, opacity: 0 }}
-                      animate={{ rotate: 0, opacity: 1 }}
-                      exit={{ rotate: -90, opacity: 0 }}
-                      transition={{ duration: 0.2 }}
-                    >
-                      <Menu size={28} />
-                    </motion.div>
-                  )}
-                </AnimatePresence>
+                {isOpen ? <X size={28} /> : <Menu size={28} />}
               </button>
             </div>
           </div>
         </div>
-      </motion.nav>
+      </nav>
 
-      <AnimatePresence>
-        {isOpen && (
-          <>
-            {/* Backdrop for mobile */}
-            <motion.div
-              initial={{ opacity: 0, backdropFilter: "blur(0px)" }}
-              animate={{ opacity: 1, backdropFilter: "blur(12px)" }}
-              exit={{ opacity: 0, backdropFilter: "blur(0px)" }}
+      {/* Mobile Overlay Backdrop */}
+      {isOpen && (
+        <div
+          className="fixed inset-0 top-16 sm:top-20 z-30 bg-black/50 backdrop-blur-sm lg:hidden transition-opacity duration-300"
+          onClick={() => setIsOpen(false)}
+        />
+      )}
+
+      {/* Mobile Sidebar */}
+      <div
+        className={`fixed right-0 top-14 sm:top-16 md:top-20 h-screen w-64 sm:w-72 z-40 bg-black transform transition-transform duration-300 ease-in-out lg:hidden border-l border-cyan-500/20 ${
+          isOpen ? "translate-x-0" : "translate-x-full"
+        }`}
+        style={{
+          boxShadow: isOpen ? "-4px 0 15px rgba(0, 0, 0, 0.3)" : "none",
+        }}
+      >
+        {/* Close Button */}
+        <div className="flex justify-end items-center p-4 sm:p-6">
+          <button
+            onClick={() => setIsOpen(false)}
+            className="text-white text-2xl sm:text-3xl hover:text-cyan-400 hover:scale-110 hover:rotate-90 transition-all duration-300"
+          >
+            <X size={28} />
+          </button>
+        </div>
+
+        {/* Menu Items */}
+        <div className="flex flex-col items-start space-y-2 p-4 sm:p-6">
+          {navLinks.map((link) => (
+            <Link
+              key={link.name}
+              href={link.href}
               onClick={() => setIsOpen(false)}
-              className='fixed inset-0 z-55 bg-black/60 lg:hidden'
-            />
-
-            {/* Mobile Sidebar */}
-            <motion.div
-              variants={sidebarVariants}
-              initial='closed'
-              animate='open'
-              exit='closed'
-              className='fixed right-0 top-0 h-screen w-[85%] max-w-sm z-60 bg-black/40 backdrop-blur-2xl lg:hidden border-l border-white/10 flex flex-col pt-24 px-8 will-change-transform'
+              className="w-full group relative text-lg sm:text-xl font-bold text-gray-300 px-4 py-2 rounded transition-all duration-300 hover:text-cyan-400 overflow-hidden"
             >
-              {/* Decorative side glow */}
-              <div className='absolute top-1/2 left-0 w-px h-[200px] -translate-y-1/2 bg-linear-to-b from-transparent via-nexora-teal/50 to-transparent shadow-[0_0_20px_rgba(30,202,211,0.3)]' />
+              {/* Background Slide */}
+              <span className="absolute inset-0 bg-gradient-to-r from-cyan-500/10 to-blue-600/10 -translate-x-full group-hover:translate-x-0 transition-transform duration-500 rounded"></span>
+              <span className="relative">{link.name}</span>
 
-              <div className='flex flex-col space-y-8'>
-                {navLinks.map((link) => (
-                  <motion.div key={link.name} variants={linkVariants}>
-                    <Link
-                      href={link.href}
-                      onClick={() => setIsOpen(false)}
-                      className='group flex items-center justify-between text-2xl tracking-tight'
-                    >
-                      <span className='text-gray-400 group-hover:text-white transition-colors duration-300'>{link.name}</span>
-                      <motion.div whileHover={{ x: 5 }} className='text-nexora-teal opacity-0 group-hover:opacity-100 transition-opacity'>
-                        <Menu size={20} className='rotate-90' />
-                      </motion.div>
-                    </Link>
-                  </motion.div>
-                ))}
-
-                <motion.div variants={linkVariants} className='pt-8'>
-                  <Link
-                    href='/contact-us'
-                    onClick={() => setIsOpen(false)}
-                    className='block w-full px-6 py-3 bg-nexora-teal text-black font-bold rounded-2xl text-center text-lg shadow-[0_0_30px_rgba(30,202,211,0.2)] active:scale-95 transition-all'
-                  >
-                    Initiate Project
-                  </Link>
-                </motion.div>
-              </div>
-
-              <div className='mt-auto pb-12 text-center'>
-                <p className='text-[10px] font-bold text-gray-600 uppercase tracking-[0.3em]'>Nexora Technologies © 2026</p>
-              </div>
-            </motion.div>
-          </>
-        )}
-      </AnimatePresence>
+              {/* Bottom Border */}
+              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-cyan-400 to-blue-500 group-hover:w-full transition-all duration-500"></span>
+            </Link>
+          ))}
+          <Link
+            href="/contact"
+            onClick={() => setIsOpen(false)}
+            className="w-full group relative mt-4 sm:mt-6 px-4 py-2 sm:py-3 bg-gradient-to-r from-cyan-500 to-blue-600 text-white font-bold rounded-full text-center text-sm sm:text-base shadow-lg shadow-cyan-500/20 transition-all duration-300 hover:shadow-cyan-500/50 hover:shadow-2xl hover:scale-105 overflow-hidden"
+          >
+            {/* Shimmer */}
+            <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700"></span>
+            <span className="relative">Contact Us</span>
+          </Link>
+        </div>
+      </div>
     </>
   );
 };
