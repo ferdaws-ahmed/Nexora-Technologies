@@ -3,7 +3,6 @@ import { useState, useMemo } from "react";
 import ProjectsHero from "./ProjectsHero";
 import ProjectFilter from "./ProjectFilter";
 import ProjectsGrid from "./ProjectsGrid";
-import ProjectsStats from "./ProjectsStats";
 import ProjectModal from "./ProjectModal";
 import { projectsData } from "@/data/projectData";
 

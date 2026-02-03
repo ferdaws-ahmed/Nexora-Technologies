@@ -29,7 +29,7 @@ const FeaturesGrid = () => {
   };
 
   return (
-    <section className='relative px-4 sm:px-6 lg:px-8 py-12 sm:py-16'>
+    <section className='relative px-4 sm:px-6 lg:px-8 pb-12 sm:py-16'>
       <div className='container mx-auto px-0'>
         <motion.div
           variants={containerVariants}

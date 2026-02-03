@@ -4,7 +4,7 @@ import { Menu, X } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState, useRef } from "react";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -54,8 +54,35 @@ const Navbar = () => {
     { name: "Services", href: "/services" },
     { name: "About", href: "/about-us" },
     { name: "Projects", href: "/projects" },
-    { name: "Blog", href: "/blog" },
   ];
+
+  const sidebarVariants = {
+    closed: {
+      x: "100%",
+      opacity: 0,
+      transition: {
+        type: "spring",
+        stiffness: 400,
+        damping: 40,
+      },
+    },
+    open: {
+      x: 0,
+      opacity: 1,
+      transition: {
+        type: "spring",
+        stiffness: 400,
+        damping: 40,
+        staggerChildren: 0.07,
+        delayChildren: 0.2,
+      },
+    },
+  };
+
+  const linkVariants = {
+    closed: { x: 50, opacity: 0 },
+    open: { x: 0, opacity: 1 },
+  };
 
   return (
     <>
@@ -69,7 +96,7 @@ const Navbar = () => {
         transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
         className='fixed top-0 z-50 w-full transition-colors duration-500'
       >
-        <div className='container mx-auto'>
+        <div className='container mx-auto px-4 md:px-0'>
           <div className='flex justify-between items-center h-16 md:h-20'>
             {/* Logo Section */}
             <div className='flex-shrink-0 flex items-center'>
@@ -101,60 +128,96 @@ const Navbar = () => {
 
             {/* Mobile Menu Button */}
             <div className='lg:hidden flex items-center'>
-              <button onClick={() => setIsOpen(!isOpen)} className='text-white p-2 transition-colors hover:text-nexora-teal'>
-                {isOpen ? <X size={28} /> : <Menu size={28} />}
+              <button
+                onClick={() => setIsOpen(!isOpen)}
+                className='text-white p-2 transition-all duration-300 hover:text-nexora-teal active:scale-90 relative z-70'
+              >
+                <AnimatePresence mode='wait'>
+                  {isOpen ? (
+                    <motion.div
+                      key='close'
+                      initial={{ rotate: -90, opacity: 0 }}
+                      animate={{ rotate: 0, opacity: 1 }}
+                      exit={{ rotate: 90, opacity: 0 }}
+                      transition={{ duration: 0.2 }}
+                    >
+                      <X size={28} />
+                    </motion.div>
+                  ) : (
+                    <motion.div
+                      key='menu'
+                      initial={{ rotate: 90, opacity: 0 }}
+                      animate={{ rotate: 0, opacity: 1 }}
+                      exit={{ rotate: -90, opacity: 0 }}
+                      transition={{ duration: 0.2 }}
+                    >
+                      <Menu size={28} />
+                    </motion.div>
+                  )}
+                </AnimatePresence>
               </button>
             </div>
           </div>
         </div>
       </motion.nav>
 
-      {/* Mobile Sidebar */}
-      <motion.div
-        initial={false}
-        animate={{ x: isOpen ? 0 : "100%" }}
-        transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
-        className='fixed right-0 top-0 h-screen w-72 z-60 bg-black/95 backdrop-blur-2xl lg:hidden border-l border-white/10'
-      >
-        <div className='flex flex-col h-full'>
-          <div className='flex justify-end p-6'>
-            <button onClick={() => setIsOpen(false)} className='text-white hover:text-nexora-teal transition-colors'>
-              <X size={28} />
-            </button>
-          </div>
-
-          <div className='flex flex-col space-y-4 px-8 pt-4'>
-            {navLinks.map((link) => (
-              <Link
-                key={link.name}
-                href={link.href}
-                onClick={() => setIsOpen(false)}
-                className='text-2xl font-bold text-gray-400 hover:text-white transition-colors py-2 border-b border-white/5'
-              >
-                {link.name}
-              </Link>
-            ))}
-            <Link
-              href='/contact-us'
+      <AnimatePresence>
+        {isOpen && (
+          <>
+            {/* Backdrop for mobile */}
+            <motion.div
+              initial={{ opacity: 0, backdropFilter: "blur(0px)" }}
+              animate={{ opacity: 1, backdropFilter: "blur(12px)" }}
+              exit={{ opacity: 0, backdropFilter: "blur(0px)" }}
               onClick={() => setIsOpen(false)}
-              className='mt-8 px-6 py-4 bg-nexora-teal text-black font-bold rounded-xl text-center shadow-lg shadow-nexora-teal/20 transition-all active:scale-95'
-            >
-              Contact Us
-            </Link>
-          </div>
-        </div>
-      </motion.div>
+              className='fixed inset-0 z-55 bg-black/60 lg:hidden'
+            />
 
-      {/* Backdrop for mobile */}
-      {isOpen && (
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-          onClick={() => setIsOpen(false)}
-          className='fixed inset-0 z-55 bg-black/60 backdrop-blur-sm lg:hidden'
-        />
-      )}
+            {/* Mobile Sidebar */}
+            <motion.div
+              variants={sidebarVariants}
+              initial='closed'
+              animate='open'
+              exit='closed'
+              className='fixed right-0 top-0 h-screen w-[85%] max-w-sm z-60 bg-black/40 backdrop-blur-2xl lg:hidden border-l border-white/10 flex flex-col pt-24 px-8 will-change-transform'
+            >
+              {/* Decorative side glow */}
+              <div className='absolute top-1/2 left-0 w-px h-[200px] -translate-y-1/2 bg-linear-to-b from-transparent via-nexora-teal/50 to-transparent shadow-[0_0_20px_rgba(30,202,211,0.3)]' />
+
+              <div className='flex flex-col space-y-8'>
+                {navLinks.map((link) => (
+                  <motion.div key={link.name} variants={linkVariants}>
+                    <Link
+                      href={link.href}
+                      onClick={() => setIsOpen(false)}
+                      className='group flex items-center justify-between text-2xl tracking-tight'
+                    >
+                      <span className='text-gray-400 group-hover:text-white transition-colors duration-300'>{link.name}</span>
+                      <motion.div whileHover={{ x: 5 }} className='text-nexora-teal opacity-0 group-hover:opacity-100 transition-opacity'>
+                        <Menu size={20} className='rotate-90' />
+                      </motion.div>
+                    </Link>
+                  </motion.div>
+                ))}
+
+                <motion.div variants={linkVariants} className='pt-8'>
+                  <Link
+                    href='/contact-us'
+                    onClick={() => setIsOpen(false)}
+                    className='block w-full px-6 py-3 bg-nexora-teal text-black font-bold rounded-2xl text-center text-lg shadow-[0_0_30px_rgba(30,202,211,0.2)] active:scale-95 transition-all'
+                  >
+                    Initiate Project
+                  </Link>
+                </motion.div>
+              </div>
+
+              <div className='mt-auto pb-12 text-center'>
+                <p className='text-[10px] font-bold text-gray-600 uppercase tracking-[0.3em]'>Nexora Technologies © 2026</p>
+              </div>
+            </motion.div>
+          </>
+        )}
+      </AnimatePresence>
     </>
   );
 };

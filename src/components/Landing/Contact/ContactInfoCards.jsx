@@ -12,8 +12,8 @@ const itemVariants = {
 
 const ContactInfoCards = () => {
   return (
-    <div className='sticky top-24'>
-      <div className='mb-12'>
+    <div className='lg:sticky lg:top-24'>
+      <div className='mb-8 md:mb-12'>
         <motion.div
           initial={{ opacity: 0, x: -10 }}
           whileInView={{ opacity: 1, x: 0 }}
@@ -23,10 +23,10 @@ const ContactInfoCards = () => {
           <div className='w-6 h-px bg-nexora-teal' />
           <span className='text-[10px] font-bold uppercase tracking-[0.3em] text-nexora-teal'>Information</span>
         </motion.div>
-        <h2 className='text-3xl font-bold text-white tracking-tight'>Contact Details</h2>
+        <h2 className='text-2xl md:text-3xl font-bold text-white tracking-tight'>Contact Details</h2>
       </div>
 
-      <div className='space-y-4 mb-16'>
+      <div className='space-y-4 mb-12 md:mb-16'>
         {contactInfo.map((info, index) => {
           const Icon = info.icon;
           return (
