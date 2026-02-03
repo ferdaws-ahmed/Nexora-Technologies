@@ -1,10 +1,9 @@
-import { motion } from "framer-motion";
-import { Award } from "lucide-react";
+import * as motion from "motion/react-client";
 
-export default function ProjectsHero() {
+export default function BlogHeader() {
   return (
     <section className='relative px-4 sm:px-6 lg:px-8 pt-24 sm:pt-28 lg:pt-32 pb-12 overflow-hidden'>
-      {/* Background Glow */}
+      {/* Background Decor */}
       <div className='absolute top-0 left-0 w-[300px] md:w-[500px] h-[300px] md:h-[500px] bg-nexora-teal/20 blur-[100px] md:blur-[120px] rounded-full -translate-x-1/2 -translate-y-1/2 pointer-events-none' />
       <div className='absolute top-1/2 right-0 w-[250px] md:w-[400px] h-[250px] md:h-[400px] bg-blue-600/10 blur-[80px] md:blur-[100px] rounded-full translate-x-1/2 -translate-y-1/2 pointer-events-none' />
 
@@ -17,8 +16,8 @@ export default function ProjectsHero() {
           className='flex items-center justify-center gap-3 mb-8'
         >
           <div className='w-6 md:w-8 h-px bg-nexora-teal' />
-          <span className='text-[10px] md:text-xs font-bold uppercase tracking-[0.3em] text-nexora-teal'>Our Portfolio</span>
-          <div className='w-6 md:w-8 h-px bg-nexora-teal md:hidden' />
+          <span className='text-[10px] md:text-xs font-bold uppercase tracking-[0.3em] text-nexora-teal'>Our Journal</span>
+          <div className='w-6 md:w-8 h-px bg-nexora-teal' />
         </motion.div>
 
         <motion.h1
@@ -28,7 +27,7 @@ export default function ProjectsHero() {
           viewport={{ once: true }}
           className='text-4xl sm:text-6xl lg:text-7xl font-bold text-white mb-6 md:mb-8 leading-[1.1] md:leading-tight'
         >
-          Successful <span className='text-nexora-teal'>Projects</span> build for diverse industries
+          Insights on <span className='text-nexora-teal'>Innovation</span> and Technology
         </motion.h1>
 
         <motion.p
@@ -38,7 +37,7 @@ export default function ProjectsHero() {
           viewport={{ once: true }}
           className='text-base md:text-xl text-gray-400 max-w-3xl mx-auto leading-relaxed px-4 md:px-0'
         >
-          Innovative solutions built with cutting-edge technologies to drive digital transformation and business excellence.
+          Stay updated with the latest trends in software development, AI, and digital transformation through Nexora&apos;s perspective.
         </motion.p>
       </div>
     </section>
