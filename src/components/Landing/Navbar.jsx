@@ -1,18 +1,18 @@
 "use client";
-import { useTheme } from "next-themes";
-import { useEffect, useState } from "react";
-import Link from "next/link";
-import { HiMenuAlt3, HiX } from "react-icons/hi";
-import logo from "../../assets/images/nexora.png";
+
+import logo from "@/assets/images/xhoraa.png";
+import { Menu, X } from "lucide-react";
 import Image from "next/image";
-import { navLinks } from "../data/navData";
+import Link from "next/link";
+import { useEffect, useState } from "react";
 
 const Navbar = () => {
-  const { theme, setTheme } = useTheme();
-  const [mounted, setMounted] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
+  const [mounted, setMounted] = useState(false);
 
-  useEffect(() => setMounted(true), []);
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   useEffect(() => {
     if (isOpen) {
@@ -27,17 +27,28 @@ const Navbar = () => {
 
   if (!mounted) return null;
 
+  const navLinks = [
+    { name: "Home", href: "/" },
+    { name: "Services", href: "/services" },
+    { name: "About", href: "/about" },
+    { name: "Blog", href: "/blog" },
+  ];
+
   return (
     <>
-      <nav className="sticky top-0 z-50 w-full border-b border-base-content/10 bg-base-100/70 backdrop-blur-lg">
+      {/* Navbar */}
+      <nav className="absolute top-0 z-50 w-full ">
         <div className="max-w-7xl mx-auto px-3 sm:px-4 md:px-6 lg:px-8">
           <div className="flex justify-between items-center h-14 sm:h-16 md:h-20">
             {/* Logo Section */}
             <div className="flex-shrink-0 flex items-center">
-              <Link href="/" className="hover:opacity-80 transition-opacity">
+              <Link
+                href="/"
+                className="hover:opacity-80 transition-all duration-300 hover:scale-105 hover:-translate-y-1"
+              >
                 <Image
                   src={logo}
-                  alt="Nexora Logo"
+                  alt="Xhoraa Logo"
                   width={120}
                   height={40}
                   className="object-contain w-auto h-auto"
@@ -45,48 +56,46 @@ const Navbar = () => {
               </Link>
             </div>
 
-            {/* Desktop Menu (Laptop/Desktop) */}
+            {/* Desktop Menu */}
             <div className="hidden lg:flex items-center space-x-6 xl:space-x-8">
               {navLinks.map((link) => (
                 <Link
                   key={link.name}
                   href={link.href}
-                  className="text-xs sm:text-sm font-semibold  tracking-widest hover:text-primary transition-colors"
+                  className="relative text-sm font-semibold text-gray-300 group"
                 >
-                  {link.name}
+                  <span className="relative inline-block transition-colors duration-300 group-hover:text-cyan-400">
+                    {link.name}
+                  </span>
+
+                  {/* Animated Underline */}
+                  <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-cyan-400 to-blue-500 group-hover:w-full transition-all duration-500"></span>
+
+                  {/* Glow Effect */}
+                  <span className="absolute inset-0 bg-gradient-to-r from-cyan-400/0 via-cyan-400/5 to-blue-500/0 opacity-0 group-hover:opacity-100 rounded-lg transition-opacity duration-300 blur-lg"></span>
                 </Link>
               ))}
             </div>
 
-            {/* End Section: Toggle & Contact */}
+            {/* Desktop CTA */}
             <div className="hidden md:flex items-center space-x-2 sm:space-x-3 md:space-x-4">
-              <button
-                onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-                className="btn btn-ghost btn-circle btn-sm text-lg sm:text-xl"
-              >
-                {theme === "dark" ? "🌞" : "🌙"}
-              </button>
               <Link
                 href="/contact"
-                className="btn btn-primary btn-sm md:btn-md rounded-full px-4 sm:px-6 md:px-8 text-white shadow-lg shadow-primary/20 text-xs sm:text-sm"
+                className="group relative px-4 sm:px-6 md:px-8 py-2 md:py-3 bg-gradient-to-r from-cyan-500 to-blue-600 text-white font-bold rounded-full text-xs sm:text-sm shadow-lg shadow-cyan-500/20 transition-all duration-300 hover:shadow-cyan-500/50 hover:shadow-2xl hover:scale-105 hover:-translate-y-1 overflow-hidden"
               >
-                Let's Talk
+                {/* Shimmer Effect */}
+                <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700"></span>
+                <span className="relative">Let's Talk</span>
               </Link>
             </div>
 
-            {/* Mobile/Tablet Menu Button */}
+            {/* Mobile Menu Button */}
             <div className="lg:hidden flex items-center gap-2 sm:gap-3 md:gap-4">
               <button
-                onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-                className="btn btn-ghost btn-circle btn-sm text-lg sm:text-xl"
-              >
-                {theme === "dark" ? "🌞" : "🌙"}
-              </button>
-              <button
                 onClick={() => setIsOpen(!isOpen)}
-                className="text-2xl sm:text-3xl focus:outline-none transition-colors hover:text-primary"
+                className="text-white text-2xl sm:text-3xl hover:text-cyan-400 transition-all duration-300 hover:scale-110 hover:rotate-90 p-2"
               >
-                {isOpen ? <HiX /> : <HiMenuAlt3 />}
+                {isOpen ? <X size={28} /> : <Menu size={28} />}
               </button>
             </div>
           </div>
@@ -96,27 +105,27 @@ const Navbar = () => {
       {/* Mobile Overlay Backdrop */}
       {isOpen && (
         <div
-          className="fixed inset-0 top-0 z-30 bg-black/50 lg:hidden"
+          className="fixed inset-0 top-16 sm:top-20 z-30 bg-black/50 backdrop-blur-sm lg:hidden transition-opacity duration-300"
           onClick={() => setIsOpen(false)}
         />
       )}
 
-      {/* Mobile/Tablet Sidebar (Smooth Slide) */}
+      {/* Mobile Sidebar */}
       <div
-        className={`fixed right-0 top-0 h-screen w-64 sm:w-72 z-40 bg-base-100 dark:bg-base-300 transform transition-transform duration-300 ease-in-out lg:hidden ${
+        className={`fixed right-0 top-14 sm:top-16 md:top-20 h-screen w-64 sm:w-72 z-40 bg-black transform transition-transform duration-300 ease-in-out lg:hidden border-l border-cyan-500/20 ${
           isOpen ? "translate-x-0" : "translate-x-full"
         }`}
         style={{
-          boxShadow: isOpen ? "-4px 0 15px rgba(0, 0, 0, 0.1)" : "none",
+          boxShadow: isOpen ? "-4px 0 15px rgba(0, 0, 0, 0.3)" : "none",
         }}
       >
         {/* Close Button */}
-        <div className="flex justify-end items-center p-4 sm:p-6 border-b border-base-content/10">
+        <div className="flex justify-end items-center p-4 sm:p-6">
           <button
             onClick={() => setIsOpen(false)}
-            className="text-2xl sm:text-3xl hover:text-primary transition-colors"
+            className="text-white text-2xl sm:text-3xl hover:text-cyan-400 hover:scale-110 hover:rotate-90 transition-all duration-300"
           >
-            <HiX />
+            <X size={28} />
           </button>
         </div>
 
@@ -127,17 +136,24 @@ const Navbar = () => {
               key={link.name}
               href={link.href}
               onClick={() => setIsOpen(false)}
-              className="w-full text-lg sm:text-xl font-bold hover:text-primary hover:bg-base-200 dark:hover:bg-base-200/20 px-4 py-2 rounded transition-colors"
+              className="w-full group relative text-lg sm:text-xl font-bold text-gray-300 px-4 py-2 rounded transition-all duration-300 hover:text-cyan-400 overflow-hidden"
             >
-              {link.name}
+              {/* Background Slide */}
+              <span className="absolute inset-0 bg-gradient-to-r from-cyan-500/10 to-blue-600/10 -translate-x-full group-hover:translate-x-0 transition-transform duration-500 rounded"></span>
+              <span className="relative">{link.name}</span>
+
+              {/* Bottom Border */}
+              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-cyan-400 to-blue-500 group-hover:w-full transition-all duration-500"></span>
             </Link>
           ))}
           <Link
             href="/contact"
             onClick={() => setIsOpen(false)}
-            className="btn btn-primary btn-sm sm:btn-md rounded-full w-full mt-4 sm:mt-6 text-white"
+            className="w-full group relative mt-4 sm:mt-6 px-4 py-2 sm:py-3 bg-gradient-to-r from-cyan-500 to-blue-600 text-white font-bold rounded-full text-center text-sm sm:text-base shadow-lg shadow-cyan-500/20 transition-all duration-300 hover:shadow-cyan-500/50 hover:shadow-2xl hover:scale-105 overflow-hidden"
           >
-            Contact Us
+            {/* Shimmer */}
+            <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700"></span>
+            <span className="relative">Contact Us</span>
           </Link>
         </div>
       </div>

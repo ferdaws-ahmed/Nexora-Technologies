@@ -1,15 +1,5 @@
 export const slides = [
   {
-    tag: "Software Engineering",
-    title: "Next-Gen Software Solutions",
-    subtitle: "Building Tomorrow's Technology",
-    description:
-      "Craft scalable, high-performance applications tailored for modern enterprises with cutting-edge architecture.",
-    image:
-      "https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=2070&auto=format&fit=crop",
-    accent: "from-cyan-400 to-blue-600",
-  },
-  {
     tag: "Artificial Intelligence",
     title: "Intelligent AI & Machine Learning",
     subtitle: "Empower Your Decisions",
@@ -19,6 +9,17 @@ export const slides = [
       "https://images.unsplash.com/photo-1677442136019-21780ecad995?q=80&w=2070&auto=format&fit=crop",
     accent: "from-purple-400 to-pink-600",
   },
+  {
+    tag: "Software Engineering",
+    title: "Next-Gen Software Solutions",
+    subtitle: "Building Tomorrow's Technology",
+    description:
+      "Craft scalable, high-performance applications tailored for modern enterprises with cutting-edge architecture.",
+    image:
+      "https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=2070&auto=format&fit=crop",
+    accent: "from-cyan-400 to-blue-600",
+  },
+
   {
     tag: "Automation",
     title: "Advanced Control & Systems",
@@ -31,7 +32,7 @@ export const slides = [
   },
   {
     tag: "Cloud Services",
-    title: "Secure Cloud Infrastructure",
+    title: "Secure Cloud and scalability",
     subtitle: "Scale Without Limits",
     description:
       "Enterprise-grade cloud solutions engineered for security, reliability, and infinite scalability.",

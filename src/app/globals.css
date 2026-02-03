@@ -4,22 +4,26 @@
 @layer base {
   body {
     @apply bg-base-100 text-base-content min-h-screen transition-colors duration-300;
+    font-family: "Nohemi", Arial, Helvetica, sans-serif;
   }
 }
 
-
-
-
-
-
-
-
+/* Swiper Custom Colors */
 :root {
-  --swiper-theme-color: #1ECAD3; 
+  --swiper-theme-color: #1ecad3; 
   --swiper-navigation-size: 24px;
 }
 
-.swiper-button-next, .swiper-button-prev {
+@font-face {
+  font-family: "Nohemi";
+  src: url("/fonts/Nohemi/Nohemi-Bold.woff") format("woff");
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+.swiper-button-next,
+.swiper-button-prev {
   background: rgba(255, 255, 255, 0.1);
   width: 50px !important;
   height: 50px !important;
@@ -30,5 +34,6 @@
 
 .swiper-pagination-bullet-active {
   width: 30px !important;
+}
   border-radius: 10px !important;
 }

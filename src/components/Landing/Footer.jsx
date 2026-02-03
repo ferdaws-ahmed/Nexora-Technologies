@@ -24,10 +24,10 @@ export default function Footer() {
             <div className="lg:col-span-1">
               <div className="mb-6">
                 <h3 className="text-2xl font-bold bg-gradient-to-r from-blue-400 to-blue-300 bg-clip-text text-transparent mb-2">
-                  NEXORA
+                  XHORAA
                 </h3>
                 <p className="text-sm text-gray-400">
-                  NEXt-gen Optimization & Research in AI
+                  XHORAA → Xtreme Horizon Operations Research & AI Applications
                 </p>
               </div>
               <p className="text-gray-400 text-sm leading-relaxed mb-6">
@@ -76,7 +76,7 @@ export default function Footer() {
 
           {/* Newsletter Section */}
           <div className="bg-gradient-to-r from-blue-600/20 to-blue-400/10 border border-blue-500/30 rounded-lg p-6 sm:p-8 mb-12">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 items-center">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-8 items-center">
               <div>
                 <h3 className="text-xl font-bold text-white mb-2">
                   Stay Updated
@@ -86,7 +86,7 @@ export default function Footer() {
                   systems delivered to your inbox.
                 </p>
               </div>
-              <div className="flex gap-2">
+              <div className="flex flex-col sm:flex-row gap-2 mt-4 md:mt-0">
                 <input
                   type="email"
                   placeholder="Enter your email"
@@ -136,7 +136,7 @@ export default function Footer() {
             {/* Copyright */}
             <div className="text-gray-400 text-sm text-center sm:text-left">
               <p>
-                &copy; {currentYear} NEXORA Technologies. All rights reserved.{" "}
+                &copy; {currentYear} XHORAA Technologies. All rights reserved.{" "}
                 <br className="sm:hidden" />
                 <span className="hidden sm:inline">
                   Civilian & Global-Safe Solutions.
@@ -172,8 +172,8 @@ export default function Footer() {
       {/* Bottom Bar */}
       <div className="border-t border-blue-500/10 bg-slate-950/50 px-4 sm:px-6 lg:px-8 py-4">
         <div className="max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-4 text-xs text-gray-500">
-          <p>Made with ⚡ by NEXORA Technologies</p>
-          <p>Next-Gen Software. Intelligent Control.</p>
+          <p>Made with ⚡ by XHORAA Technologies</p>
+          <p>XHORAA → Xtreme Horizon Operations Research & AI Applications</p>
         </div>
       </div>
     </footer>
