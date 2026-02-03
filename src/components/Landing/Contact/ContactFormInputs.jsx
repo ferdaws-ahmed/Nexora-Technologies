@@ -67,21 +67,22 @@ const ContactFormInput = () => {
   };
 
   return (
-    <div className='relative bg-white/5 border border-white/5 rounded-2xl p-8 lg:p-12 overflow-hidden'>
+    <div className='relative bg-white/5 border border-white/5 rounded-2xl p-6 md:p-12 overflow-hidden'>
       {/* Subtle Glow inside form */}
       <div className='absolute -top-24 -right-24 w-48 h-48 bg-nexora-teal/10 blur-[100px] pointer-events-none' />
 
       {!isSubmitted ? (
-        <div className='relative space-y-8'>
+        <div className='relative space-y-6 md:space-y-8'>
           {/* Name & Email */}
-          <div className='grid grid-cols-1 sm:grid-cols-2 gap-8'>
+          <div className='grid grid-cols-1 sm:grid-cols-2 gap-6 md:gap-8'>
+            {/* ... existing input fields ... */}
             <motion.div
               initial={{ opacity: 0, y: 10 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.1 }}
             >
-              <label className='block text-[10px] font-bold text-gray-500 uppercase tracking-widest mb-4'>
+              <label className='block text-[10px] font-bold text-gray-500 uppercase tracking-widest mb-3 md:mb-4'>
                 Full Name <span className='text-nexora-teal'>*</span>
               </label>
               <input
@@ -90,7 +91,7 @@ const ContactFormInput = () => {
                 value={formData.fullName}
                 onChange={handleChange}
                 placeholder='John Doe'
-                className={`w-full px-0 py-3 bg-transparent border-b transition-all duration-500 text-white placeholder-gray-700 focus:outline-none ${
+                className={`w-full px-0 py-2 md:py-3 bg-transparent border-b transition-all duration-500 text-white placeholder-gray-700 focus:outline-none ${
                   errors.fullName ? "border-red-500/50 focus:border-red-500" : "border-white/10 focus:border-nexora-teal"
                 }`}
               />
@@ -102,7 +103,7 @@ const ContactFormInput = () => {
               viewport={{ once: true }}
               transition={{ delay: 0.2 }}
             >
-              <label className='block text-[10px] font-bold text-gray-500 uppercase tracking-widest mb-4'>
+              <label className='block text-[10px] font-bold text-gray-500 uppercase tracking-widest mb-3 md:mb-4'>
                 Email Address <span className='text-nexora-teal'>*</span>
               </label>
               <input
@@ -111,7 +112,7 @@ const ContactFormInput = () => {
                 value={formData.email}
                 onChange={handleChange}
                 placeholder='john@example.com'
-                className={`w-full px-0 py-3 bg-transparent border-b transition-all duration-500 text-white placeholder-gray-700 focus:outline-none ${
+                className={`w-full px-0 py-2 md:py-3 bg-transparent border-b transition-all duration-500 text-white placeholder-gray-700 focus:outline-none ${
                   errors.email ? "border-red-500/50 focus:border-red-500" : "border-white/10 focus:border-nexora-teal"
                 }`}
               />
@@ -119,14 +120,14 @@ const ContactFormInput = () => {
           </div>
 
           {/* Phone & Company */}
-          <div className='grid grid-cols-1 sm:grid-cols-2 gap-8'>
+          <div className='grid grid-cols-1 sm:grid-cols-2 gap-6 md:gap-8'>
             <motion.div
               initial={{ opacity: 0, y: 10 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.3 }}
             >
-              <label className='block text-[10px] font-bold text-gray-500 uppercase tracking-widest mb-4'>
+              <label className='block text-[10px] font-bold text-gray-500 uppercase tracking-widest mb-3 md:mb-4'>
                 Phone Number <span className='text-nexora-teal'>*</span>
               </label>
               <input
@@ -135,7 +136,7 @@ const ContactFormInput = () => {
                 value={formData.phone}
                 onChange={handleChange}
                 placeholder='+1 (555) 000-0000'
-                className={`w-full px-0 py-3 bg-transparent border-b transition-all duration-500 text-white placeholder-gray-700 focus:outline-none ${
+                className={`w-full px-0 py-2 md:py-3 bg-transparent border-b transition-all duration-500 text-white placeholder-gray-700 focus:outline-none ${
                   errors.phone ? "border-red-500/50 focus:border-red-500" : "border-white/10 focus:border-nexora-teal"
                 }`}
               />
@@ -147,14 +148,14 @@ const ContactFormInput = () => {
               viewport={{ once: true }}
               transition={{ delay: 0.4 }}
             >
-              <label className='block text-[10px] font-bold text-gray-500 uppercase tracking-widest mb-4'>Company (Optional)</label>
+              <label className='block text-[10px] font-bold text-gray-500 uppercase tracking-widest mb-3 md:mb-4'>Company (Optional)</label>
               <input
                 type='text'
                 name='company'
                 value={formData.company}
                 onChange={handleChange}
                 placeholder='Your Organization'
-                className='w-full px-0 py-3 bg-transparent border-b border-white/10 focus:border-nexora-teal transition-all duration-500 text-white placeholder-gray-700 focus:outline-none'
+                className='w-full px-0 py-2 md:py-3 bg-transparent border-b border-white/10 focus:border-nexora-teal transition-all duration-500 text-white placeholder-gray-700 focus:outline-none'
               />
             </motion.div>
           </div>
@@ -166,7 +167,7 @@ const ContactFormInput = () => {
             viewport={{ once: true }}
             transition={{ delay: 0.5 }}
           >
-            <label className='block text-[10px] font-bold text-gray-500 uppercase tracking-widest mb-4'>
+            <label className='block text-[10px] font-bold text-gray-500 uppercase tracking-widest mb-3 md:mb-4'>
               Interested Service <span className='text-nexora-teal'>*</span>
             </label>
             <div className='relative'>
@@ -174,7 +175,7 @@ const ContactFormInput = () => {
                 name='service'
                 value={formData.service}
                 onChange={handleChange}
-                className={`w-full px-0 py-3 bg-transparent border-b transition-all duration-500 text-white appearance-none focus:outline-none ${
+                className={`w-full px-0 py-2 md:py-3 bg-transparent border-b transition-all duration-500 text-white appearance-none focus:outline-none ${
                   errors.service ? "border-red-500/50 focus:border-red-500" : "border-white/10 focus:border-nexora-teal"
                 }`}
               >
@@ -197,7 +198,7 @@ const ContactFormInput = () => {
             viewport={{ once: true }}
             transition={{ delay: 0.6 }}
           >
-            <label className='block text-[10px] font-bold text-gray-500 uppercase tracking-widest mb-4'>
+            <label className='block text-[10px] font-bold text-gray-500 uppercase tracking-widest mb-3 md:mb-4'>
               Project Brief <span className='text-nexora-teal'>*</span>
             </label>
             <textarea
@@ -205,8 +206,8 @@ const ContactFormInput = () => {
               value={formData.message}
               onChange={handleChange}
               placeholder='Tell us more about your objectives...'
-              rows='4'
-              className={`w-full px-0 py-3 bg-transparent border-b transition-all duration-500 text-white placeholder-gray-700 focus:outline-none resize-none ${
+              rows='3'
+              className={`w-full px-0 py-2 md:py-3 bg-transparent border-b transition-all duration-500 text-white placeholder-gray-700 focus:outline-none resize-none ${
                 errors.message ? "border-red-500/50 focus:border-red-500" : "border-white/10 focus:border-nexora-teal"
               }`}
             />
@@ -221,7 +222,7 @@ const ContactFormInput = () => {
             whileTap={{ scale: 0.99 }}
             onClick={handleSubmit}
             disabled={isLoading}
-            className='w-full px-8 py-5 bg-nexora-teal rounded-xl cursor-pointer text-black font-bold uppercase tracking-widest text-[14px] transition-all duration-500 flex items-center justify-center gap-3 group relative overflow-hidden'
+            className='w-full px-8 py-4 md:py-5 bg-nexora-teal rounded-xl cursor-pointer text-black font-bold uppercase tracking-widest text-[13px] md:text-[14px] transition-all duration-500 flex items-center justify-center gap-3 group relative overflow-hidden'
           >
             {isLoading ? (
               <>
