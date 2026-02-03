@@ -2,14 +2,9 @@
 const nextConfig = {
   /* config options here */
   images: {
-    remotePatterns: [
-      {
-        protocol: "https",
-        hostname: "logo.svgcdn.com",
-      },
-    ],
+    domains: ["logo.svgcdn.com"], // add all external hosts you use
   },
-  devIndicators: false,
+  reactCompiler: true,
 };
 
 export default nextConfig;
