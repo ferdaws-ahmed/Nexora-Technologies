@@ -37,7 +37,8 @@ export const projectsData = [
     id: 3,
     title: "Zenith ERP Solution",
     category: "ERP / Inventory / POS",
-    image: "https://images.unsplash.com/photo-1586717791821-3f44a563eb4c?auto=format&fit=crop&q=80&w=1000",
+    // Fixed Image for ERP
+    image: "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&q=80&w=1000",
     description: "Cloud-based ERP for manufacturing management.",
     longDescription: "Custom ERP designed for supply chain, payroll, and stock replenishment.",
     client: "Zenith Manufacturing",
@@ -71,7 +72,8 @@ export const projectsData = [
     id: 5,
     title: "PortfolioX",
     category: "Business / Portfolio Website",
-    image: "https://images.unsplash.com/photo-1460925895917-aeb19be489c7?auto=format&fit=crop&q=80&w=1000",
+    // Fixed Image for Portfolio
+    image: "https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?auto=format&fit=crop&q=80&w=1000",
     description: "Creative portfolio for high-profile architects.",
     longDescription: "Minimalist portfolio showcasing high-res galleries with smooth transitions.",
     client: "Studio Arch",
@@ -88,7 +90,8 @@ export const projectsData = [
     id: 6,
     title: "AutoStream Bot",
     category: "Automation Software",
-    image: "https://images.unsplash.com/photo-1518433278985-61875154388e?auto=format&fit=crop&q=80&w=1000",
+    // Fixed Image for Automation/Bot
+    image: "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?auto=format&fit=crop&q=80&w=1000",
     description: "Workflow automation for social media leads.",
     longDescription: "Automation tool for repetitive tasks and public directory lead scraping.",
     client: "GrowthHackers Agency",
@@ -156,7 +159,8 @@ export const projectsData = [
     id: 10,
     title: "FinConnect API",
     category: "API-based Web System",
-    image: "https://images.unsplash.com/photo-1558494949-ef010cbdcc51?auto=format&fit=crop&q=80&w=1000",
+    
+    image: "https://images.pexels.com/photos/6770610/pexels-photo-6770610.jpeg?auto=compress&cs=tinysrgb&w=1000",
     description: "Middleware API system for financial data exchange.",
     longDescription: "Secure API gateway bridging banking systems and fintech apps.",
     client: "FinTech Solutions",

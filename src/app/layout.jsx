@@ -3,6 +3,7 @@ import "./globals.css";
 import { ThemeProvider } from "@/components/ThemeProvider";
 import Navbar from "@/components/Landing/Navbar";
 import Footer from "@/components/Landing/Footer";
+import { Toaster } from 'react-hot-toast';
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -22,18 +23,19 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    // suppressHydrationWarning অবশ্যই যোগ করবেন
+    // suppressHydrationWarning 
     <html lang="en" suppressHydrationWarning>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased transition-colors duration-300`}
       >
         <ThemeProvider>
-          {/* পুরো স্ক্রিন জুরে ব্যাকগ্রাউন্ড নিশ্চিত করতে flex layout */}
+          {/* flex layout */}
           <div className="flex flex-col min-h-screen bg-base-100 text-base-content">
             <Navbar />
             <main className="flex-grow">{children}</main>
             <Footer />
           </div>
+          <Toaster position="bottom-right" reverseOrder={false} />
         </ThemeProvider>
       </body>
     </html>
