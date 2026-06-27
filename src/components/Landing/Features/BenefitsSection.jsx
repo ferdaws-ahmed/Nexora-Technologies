@@ -238,6 +238,7 @@ const BenefitsSection = () => {
                   transition={{ delay: 0.9 }}
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
+                  
                   className="px-8 py-3 rounded-full bg-white hover:bg-cyan-50 text-slate-900 font-bold text-sm sm:text-base transition-all duration-300 shadow-lg hover:shadow-xl hover:shadow-white/20"
                 >
                   Get Started Now

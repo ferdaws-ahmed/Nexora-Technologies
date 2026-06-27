@@ -1,10 +1,10 @@
 export const faqData = [
   {
-    q: "What is NEXORA Technologies?",
-    a: "NEXORA Technologies is a software development and artificial intelligence company specializing in intelligent systems, automation, and next-generation digital platforms. We provide civilian and commercial software solutions with a focus on reliability, scalability, and ethical AI implementation.",
+    q: "What is XHORAA Technologies?",
+    a: "XHORAA Technologies is a software development and artificial intelligence company specializing in intelligent systems, automation, and next-generation digital platforms. We provide civilian and commercial software solutions with a focus on reliability, scalability, and ethical AI implementation.",
   },
   {
-    q: "What services does NEXORA offer?",
+    q: "What services does XHORAA offer?",
     a: "We offer a comprehensive range of services including software development, web & platform development, AI & machine learning solutions, and intelligent control systems for various industries.",
   },
   {

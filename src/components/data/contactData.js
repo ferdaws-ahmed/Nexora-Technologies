@@ -13,14 +13,14 @@ export const contactInfo = [
   {
     icon: Mail,
     label: "Email",
-    value: "hello@nexora.tech",
-    href: "mailto:hello@nexora.tech",
+    value: "xhoraatech@gmail.com",
+    href: "mailto:xhoraatech@gmail.com",
   },
   {
     icon: Phone,
     label: "Phone",
-    value: "+880 1929-559902",
-    href: "tel:+8801929559902",
+    value: "+880 1610438236",
+    href: "tel:+8801610438236",
   },
   {
     icon: MapPin,

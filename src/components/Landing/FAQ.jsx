@@ -31,7 +31,7 @@ export default function FAQ() {
               </h1>
 
               <p className="text-xl text-gray-300 mb-10 leading-relaxed max-w-xl">
-                Find comprehensive answers to your questions about NEXORA
+                Find comprehensive answers to your questions about XHORAA
                 Technologies, our services, and how we can help transform your
                 business.
               </p>

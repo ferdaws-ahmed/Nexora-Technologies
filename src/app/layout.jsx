@@ -16,9 +16,12 @@ const geistMono = Geist_Mono({
 
 export const metadata = {
   title: "Xhoraa → Xtreme Horizon Operations Research & AI Applications",
-  icons: {
-    icon: "/Nexora(1).png",
-  },
+  icons: [
+    { url: "/xhoraa.png", sizes: "122x122" },
+  ]
+  
+    
+  ,
 };
 
 export default function RootLayout({ children }) {

@@ -10,6 +10,9 @@ export const servicesData = [
       "We build scalable, high-performance applications tailored to your business needs using modern technologies and best practices.",
     features: [
       "Custom software solutions",
+      "Mobile Apps",
+      "Desktop Apps",
+      "Linux Systems",
       "Enterprise applications",
       "SaaS platforms",
       "Cloud-based systems",

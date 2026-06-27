@@ -15,10 +15,10 @@ export default function CTA() {
 
         <div className="hidden lg:flex gap-4 justify-center">
           <button className="px-8 py-4 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-lg transition-all duration-200 hover:shadow-lg hover:shadow-blue-600/50 transform hover:scale-105">
-            Contact Our Team
+            <a href="/contact">Contact Our Team</a>
           </button>
           <button className="px-8 py-4 border-2 border-blue-500 text-blue-400 hover:bg-blue-500/10 font-semibold rounded-lg transition-all duration-200 hover:border-blue-400">
-            Schedule a Demo
+            <a href="/contact">Schedule a Demo</a>
           </button>
         </div>
       </div>
